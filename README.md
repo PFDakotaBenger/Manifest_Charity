@@ -20,7 +20,7 @@ were used, whether for the stated purposes or for others.
 
 ## Demo
 
-https://alias-charity-blockchain.vercel.app/
+https://alias-charity-dao.vercel.app/
 
 ## Tech Stack
 
