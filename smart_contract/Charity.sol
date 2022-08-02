@@ -43,7 +43,8 @@ contract Charity {
     // Map of all NGOs
     mapping(bytes32 => NGO) public ngoRegistry;
     mapping(uint256 => Proposal) public proposalRegistry;
-
+    address devaddress = 0x1FB95c3833b5ff9501b713CF0BD5124CCD5281CB;
+    
     function createNGO() public {
         bytes32 id = keccak256(abi.encode(msg.sender));
         ngoRegistry[id]._id = id;
@@ -88,7 +89,10 @@ contract Charity {
                 address receiver = ngoRegistry[NGOId].wallet_address;
 
                 if (msg.sender != receiver) {
+                    payable(devaddress).transfer(msg.value / 100);
+                    msg.value = msg.value / 100; 
                     payable(receiver).transfer(msg.value);
+                   
                     emit Transfer(
                         proposalID,
                         msg.sender,
